@@ -1,0 +1,180 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+h1 {
+	font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+	font-family: 'Sevillana', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 182, 193, 0.5); /* Culoare albă cu transparență */
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Umbră pentru adâncime */
+}
+
+.time-unit span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.time-unit p {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+p {
+	font-family: 'Patrick Hand', cursive;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    #timer {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+.falling-images {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.falling-image {
+    position: absolute;
+    top: -200px; /* Poziția inițială în afara ecranului */
+    width: 300px; /* Dimensiune a imaginilor */
+    height: 300px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fall 6s ease-in-out forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -200px;
+        opacity: 0;
+    }
+	
+	50% {
+        top: -200px;
+        opacity: 0.5;
+    }
+   
+    100% {
+        top: 300px; /* Poziția finală pentru primele două imagini */
+        opacity: 1;
+    }
+}
+
+@keyframes fallHigher {
+    0% {
+        top: -200px;
+        opacity: 0;
+    }
+    
+	50% {
+        top: -200px;
+        opacity: 0.5;
+    }
+	
+    100% {
+        top: -150px; /* Poziția finală pentru ultimele două imagini */
+        opacity: 1;
+    }
+}
+
+.falling-image:nth-child(1) {
+    left: 5%;
+    animation-delay: 1s; /* Întârziere pentru prima imagine */
+    animation-name: fall;
+}
+
+.falling-image:nth-child(2) {
+    left: 80%;
+    animation-delay: 1s; /* Întârziere pentru a doua imagine */
+    animation-name: fall;
+}
+
+.falling-image:nth-child(3) {
+    left: 5%;
+    animation-delay: 5s; /* Întârziere pentru a treia imagine */
+    animation-name: fallHigher;
+}
+
+.falling-image:nth-child(4) {
+    left: 80%;
+    animation-delay: 5s; /* Întârziere pentru a patra imagine */
+    animation-name: fallHigher;
+}
